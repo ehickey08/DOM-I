@@ -93,3 +93,32 @@ contact_lines[2].textContent = siteContent['contact']['email'];
 
 let copyright = document.querySelector('footer p');
 copyright.textContent = siteContent['footer']['copyright'];
+
+//Stretch Goals: Change some styling
+
+
+cta_heading.style.borderRadius = '20px';
+middle_image.style.borderRadius = '10px';
+main_paras[3].style.backgroundColor = 'rgba(200,200,200,0.5)'
+cta_image.style.background = 'linear-gradient(rgba(255, 0, 0, 0.45), rgba(0, 255, 0, 0.45))';
+
+//Create an EventListener for the button
+cta_button.addEventListener('click', (event) => {
+    cta_heading.style.backgroundImage = 'radial-gradient(red,yellow,green)';
+});
+
+let keyListener = document.createElement('p');
+keyListener.style.fontSize = '15px';
+keyListener.style.marginTop = '5px';
+keyListener.textContent = "Press some keys:";
+
+let cta_text = document.querySelector('.cta-text');
+cta_text.appendChild(keyListener);
+
+let recordKey = function(e) {
+    keyListener.textContent += `${e.code}`;
+}
+
+document.addEventListener('keydown', recordKey);
+
+//Stertch Project: Digital Timer
