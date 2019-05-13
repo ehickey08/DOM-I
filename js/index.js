@@ -41,20 +41,21 @@ const siteContent = {
 let logo = document.getElementById("logo-img");
 logo.setAttribute('src', siteContent["nav"]["img-src"])
 
+//create the navbar links with text, and set color to green
 let navLinks = document.querySelectorAll('nav a');
 navLinks.forEach((el, index) => el.textContent = siteContent['nav']['nav-item-'+(index+1)])
 navLinks.forEach(el => el.style.color = 'green');
-
-let navBar = document.querySelector('header nav');
+ //add to items, one at the beginning, one at the end for the navbar
+let navBar = document.querySelector('header nav'); //get parentEl for nav items
 let lastChild = document.createElement('a');
 lastChild.textContent='Last';
 lastChild.style.color = 'green';
-navBar.appendChild(lastChild);
+navBar.appendChild(lastChild); //add last element to navbar
 
 let firstChild = document.createElement('a');
 firstChild.textContent = 'First';
 firstChild.style.color = 'green';
-navBar.prepend(firstChild);
+navBar.prepend(firstChild); //add first element to navbar
 
 
 let cta_heading = document.querySelector('.cta-text h1');
@@ -96,8 +97,6 @@ copyright.textContent = siteContent['footer']['copyright'];
 
 //Stretch Goals: Change some styling
 
-
-cta_heading.style.borderRadius = '20px';
 middle_image.style.borderRadius = '10px';
 main_paras[3].style.backgroundColor = 'rgba(200,200,200,0.5)'
 cta_image.style.background = 'linear-gradient(rgba(255, 0, 0, 0.45), rgba(0, 255, 0, 0.45))';
@@ -105,20 +104,28 @@ cta_image.style.background = 'linear-gradient(rgba(255, 0, 0, 0.45), rgba(0, 255
 //Create an EventListener for the button
 cta_button.addEventListener('click', (event) => {
     cta_heading.style.backgroundImage = 'radial-gradient(red,yellow,green)';
+    cta_heading.style.borderRadius = '20px';
 });
 
-let keyListener = document.createElement('p');
-keyListener.style.fontSize = '15px';
-keyListener.style.marginTop = '5px';
-keyListener.textContent = "Press some keys:";
+//create a new div for key listener
+let keyListener = document.createElement('div');
+keyListener.style.fontSize = '0.85rem';
+keyListener.style.marginTop = '1rem';
+keyListener.textContent = "Press a key:";
 
-let cta_text = document.querySelector('.cta-text');
-cta_text.appendChild(keyListener);
+let cta_text = document.querySelector('.cta-text'); //get parent Element for the keyListener div
+cta_text.appendChild(keyListener); //add keylistener Div
 
+//create a function to record the key
 let recordKey = function(e) {
-    keyListener.textContent += `${e.code}`;
+    keyListener.textContent = `${e.code}`;
 }
 
 document.addEventListener('keydown', recordKey);
+
+//use arrow function to reset the keyListener div
+document.addEventListener('keyup', (event) => {
+    keyListener.textContent = 'Press a key';
+})
 
 
