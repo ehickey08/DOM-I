@@ -43,6 +43,18 @@ logo.setAttribute('src', siteContent["nav"]["img-src"])
 
 let navLinks = document.querySelectorAll('nav a');
 navLinks.forEach((el, index) => el.textContent = siteContent['nav']['nav-item-'+(index+1)])
+navLinks.forEach(el => el.style.color = 'green');
+
+let navBar = document.querySelector('header nav');
+let lastChild = document.createElement('a');
+lastChild.textContent='Last';
+lastChild.style.color = 'green';
+navBar.appendChild(lastChild);
+
+let firstChild = document.createElement('a');
+firstChild.textContent = 'First';
+firstChild.style.color = 'green';
+navBar.prepend(firstChild);
 
 
 let cta_heading = document.querySelector('.cta-text h1');
