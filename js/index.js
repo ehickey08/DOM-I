@@ -121,4 +121,4 @@ let recordKey = function(e) {
 
 document.addEventListener('keydown', recordKey);
 
-//Stertch Project: Digital Timer
+
